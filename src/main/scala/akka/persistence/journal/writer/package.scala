@@ -59,7 +59,7 @@ package object writer {
     val groupedByPid: Map[String, AtomicWrite] =
       xs.groupBy(_.persistenceId)
         .mapValues(listOfEnvelopeToRepr)
-        .mapValues(listOfReprToAtomicWrite)
+        .mapValues(listOfReprToAtomicWrite).toMap
     Seq(groupedByPid.values.toList: _*)
   }
 

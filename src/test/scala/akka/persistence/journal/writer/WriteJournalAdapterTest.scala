@@ -60,7 +60,7 @@ class WriteJournalAdapterTest extends TestSpec {
 
   it should "send instructions to write an EventEnvelope" in withJournal { sink => journal => adapter =>
     sink.send(adapter, EventEnvelope(NoOffset, "pid1", 1L, "foo"))
-    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _)))), _, _) => }
+    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _, _)))), _, _) => }
     journal.reply(WriteMessagesSuccessful)
     sink.expectMsg("ack")
   }
@@ -72,7 +72,7 @@ class WriteJournalAdapterTest extends TestSpec {
     sink.expectMsg("ack")
 
     sink.send(adapter, Seq(EventEnvelope(NoOffset, "pid1", 1L, "foo"), EventEnvelope(NoOffset, "pid1", 2L, "bar")))
-    journal.expectMsgPF() { case WriteMessages(Seq(AtomicWrite(Seq(PersistentImpl("foo", 1L, "pid1", _, _, _, _), PersistentImpl("bar", 2L, "pid1", _, _, _, _)))), _, _) => }
+    journal.expectMsgPF() { case WriteMessages(Seq(AtomicWrite(Seq(PersistentImpl("foo", 1L, "pid1", _, _, _, _, _), PersistentImpl("bar", 2L, "pid1", _, _, _, _, _)))), _, _) => }
     journal.reply(WriteMessagesSuccessful)
     sink.expectMsg("ack")
   }
@@ -85,21 +85,21 @@ class WriteJournalAdapterTest extends TestSpec {
 
   it should "fail the sink when journal fails writing messages" in withJournal { sink => journal => adapter =>
     sink.send(adapter, EventEnvelope(NoOffset, "pid1", 1L, "foo"))
-    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _)))), _, _) => }
+    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _, _)))), _, _) => }
     journal.reply(WriteMessagesFailed(mockFailure))
     sink.expectMsg(akka.actor.Status.Failure(mockFailure))
   }
 
   it should "fail the sink when journal fails writing a message" in withJournal { sink => journal => adapter =>
     sink.send(adapter, EventEnvelope(NoOffset, "pid1", 1L, "foo"))
-    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _)))), _, _) => }
+    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _, _)))), _, _) => }
     journal.reply(WriteMessageFailure(null, mockFailure, 1))
     sink.expectMsg(akka.actor.Status.Failure(mockFailure))
   }
 
   it should "fail the sink when journal rejects a message" in withJournal { sink => journal => adapter =>
     sink.send(adapter, EventEnvelope(NoOffset, "pid1", 1L, "foo"))
-    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _)))), _, _) => }
+    journal.expectMsgPF() { case WriteMessages(List(AtomicWrite(List(PersistentImpl("foo", 1L, "pid1", _, _, _, _, _)))), _, _) => }
     journal.reply(WriteMessageRejected(null, mockFailure, 1))
     sink.expectMsg(akka.actor.Status.Failure(mockFailure))
   }
