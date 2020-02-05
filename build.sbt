@@ -7,7 +7,7 @@ organization := "io.github.mikla"
 
 scalaVersion := "2.13.1"
 
-crossScalaVersions := Seq("2.11.8", "2.12.10", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 
 resolvers += Resolver.jcenterRepo
 externalResolvers ++= Seq(
@@ -40,8 +40,6 @@ fork in Test := true
 
 parallelExecution in Test := false
 
-licenses += ("Apache-2.0", url("http://opensource.org/licenses/apache2.0.php"))
-
 // enable scala code formatting //
 import com.typesafe.sbt.SbtScalariform
 
@@ -61,18 +59,19 @@ headerLicense := Some(HeaderLicense.ALv2("2016", "Dennis Vriend"))
 
 enablePlugins(AutomateHeaderPlugin)
 
-ThisBuild / scmInfo := Some(
+scmInfo := Some(
   ScmInfo(
     url("https://github.com/mikla/akka-persistence-jounal-writer"),
     "scm:git@github.com:mikla/akka-persistence-jounal-writer.git"
   )
 )
-ThisBuild / publishTo := {
+publishTo := {
   val nexus = "https://oss.sonatype.org/"
   if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
-ThisBuild / publishMavenStyle := true
-ThisBuild / publishArtifact in Test := false
-ThisBuild / pomIncludeRepository := { _ => false }
-ThisBuild / licenses := Seq("Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
+publishMavenStyle := true
+pomIncludeRepository := { _ => false }
+licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
+publishConfiguration := publishConfiguration.value.withOverwrite(true)
+publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)
