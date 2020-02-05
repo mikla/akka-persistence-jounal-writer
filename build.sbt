@@ -56,6 +56,23 @@ SbtScalariform.autoImport.scalariformPreferences := SbtScalariform.autoImport.sc
 // enable updating file headers //
 
 import de.heikoseeberger.sbtheader._
+
 headerLicense := Some(HeaderLicense.ALv2("2016", "Dennis Vriend"))
 
 enablePlugins(AutomateHeaderPlugin)
+
+ThisBuild / scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/mikla/akka-persistence-jounal-writer"),
+    "scm:git@github.com:mikla/akka-persistence-jounal-writer.git"
+  )
+)
+ThisBuild / publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+ThisBuild / publishMavenStyle := true
+ThisBuild / publishArtifact in Test := false
+ThisBuild / pomIncludeRepository := { _ => false }
+ThisBuild / licenses := Seq("Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
