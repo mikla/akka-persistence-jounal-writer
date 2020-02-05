@@ -11,4 +11,7 @@ addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.2")
 // enable updating file headers eg. for copyright
 addSbtPlugin("de.heikoseeberger" % "sbt-header" % "5.0.0")
 
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.4")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.0")
+
+addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.13")
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")

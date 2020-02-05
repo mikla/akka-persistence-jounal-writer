@@ -3,7 +3,7 @@ import sbt.Keys._
 
 name := "akka-persistence-journal-writer"
 
-organization := "com.github.dnvriend"
+organization := "io.github.mikla"
 
 scalaVersion := "2.13.1"
 
