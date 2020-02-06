@@ -1,16 +1,26 @@
 # akka-persistence-journal-writer
 
 [![Build Status](https://travis-ci.org/dnvriend/akka-persistence-jounal-writer.svg?branch=master)](https://travis-ci.org/dnvriend/akka-persistence-jounal-writer)
-[ ![Download](https://api.bintray.com/packages/dnvriend/maven/akka-persistence-journal-writer/images/download.svg) ](https://bintray.com/dnvriend/maven/akka-persistence-journal-writer/_latestVersion)
+
+![Maven Central 2.12](https://img.shields.io/maven-central/v/io.github.mikla/akka-persistence-journal-writer_2.12.svg?label=Scala%202.12)
+![Maven Central 2.12](https://img.shields.io/maven-central/v/io.github.mikla/akka-persistence-journal-writer_2.13.svg?label=Scala%202.13)
+
 [![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
 __akka-persistence-query-writer__ consists of an akka-streams `Flow` and `Sink` that makes it possible to write
 `EventEnvelope` , `Seq[EventEnvelope]` to __any__ akka-persistence jounal.
 It does this by sending messages directly to the [journal plugin itself](http://doc.akka.io/api/akka/2.4/#akka.persistence.journal.japi.AsyncWriteJournal).
 
+Original work done by [Dennis Vriend](https://github.com/dnvriend).
+
 ## Installation
 Add the following to your `build.sbt`:
 
+```scala
+libraryDependencies += "io.github.mikla" %% "akka-persistence-journal-writer" % "0.0.5"
+```
+
+For version 0.0.4 and older:
 ```scala
 // the library is available in Bintray's JCenter
 resolvers += Resolver.jcenterRepo
@@ -131,6 +141,10 @@ This will have no persistent-actor life cycle overhead and will be much faster.
 Its only applicable in some use cases of course.
 
 # What's new?
+
+### 0.0.5 (2020-02-05)
+- Akka 2.5. Scala 2.13 support.
+
 ## 0.0.2 (2016-11-03)
   - cross scala 2.11.8 and 2.12.0 build against akka 2.4.12
 
