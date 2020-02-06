@@ -3,10 +3,7 @@ homepage := Some(url("https://github.com/dnvriend/akka-persistence-journal-write
 
 pomIncludeRepository := (_ => false)
 
-pomExtra := <scm>
-  <url>https://github.com/dnvriend/akka-persistence-journal-writer</url>
-  <connection>scm:git@github.com:dnvriend/akka-persistence-journal-writer.git</connection>
-  </scm>
+pomExtra :=
   <developers>
     <developer>
       <id>dnvriend</id>
