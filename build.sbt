@@ -5,9 +5,9 @@ name := "akka-persistence-journal-writer"
 
 organization := "io.github.mikla"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.4"
 
-crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
+crossScalaVersions := Seq("2.13.4") // "2.11.12", "2.12.12" 
 
 resolvers += Resolver.jcenterRepo
 externalResolvers ++= Seq(
@@ -15,12 +15,12 @@ externalResolvers ++= Seq(
 )
 
 libraryDependencies ++= {
-  val akkaVersion = "2.5.29"
+  val akkaVersion = "2.6.10"
   val akkaPersistenceInMemoryVersion = "2.5.15.2"
-  val commonIoVersion = "2.6"
-  val leveldbVersion = "0.10"
+  val commonIoVersion = "2.8.0"
+  val leveldbVersion = "0.12"
   val leveldbJniVersion = "1.8"
-  val scalaTestVersion = "3.1.0"
+  val scalaTestVersion = "3.1.4"
   Seq(
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-persistence" % akkaVersion,
