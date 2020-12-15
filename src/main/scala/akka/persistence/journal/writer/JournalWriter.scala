@@ -29,8 +29,9 @@ import scala.collection.immutable._
 import scala.concurrent.duration._
 import scala.concurrent.{ ExecutionContext, Future }
 import scala.reflect.ClassTag
+import akka.actor.ActorLogging
 
-class WriteJournalAdapterCameo(writePlugin: ActorRef, replyTo: ActorRef, messages: Seq[EventEnvelope]) extends Actor {
+class WriteJournalAdapterCameo(writePlugin: ActorRef, replyTo: ActorRef, messages: Seq[EventEnvelope]) extends Actor with ActorLogging {
   override def preStart(): Unit = {
     if (messages.isEmpty)
       replyWithSuccess(replyTo)
@@ -43,12 +44,15 @@ class WriteJournalAdapterCameo(writePlugin: ActorRef, replyTo: ActorRef, message
       replyWithSuccess(replyTo)
     case WriteMessagesSuccessful =>
       replyWithSuccess(replyTo)
-    case WriteMessagesFailed(cause) =>
-      replyWithFailure(replyTo, cause)
-    case WriteMessageRejected(_, cause, _) =>
-      replyWithFailure(replyTo, cause)
-    case WriteMessageFailure(_, cause, _) =>
-      replyWithFailure(replyTo, cause)
+    case msg: WriteMessagesFailed =>
+      replyWithFailure(replyTo, msg.cause)
+    case msg: WriteMessageRejected =>
+      replyWithFailure(replyTo, msg.cause)
+    case msg: WriteMessageFailure =>
+      replyWithFailure(replyTo, msg.cause)
+    case s =>
+      log.error(s"~~~~~~ unhandled message ${s}")
+      replyWithFailure(replyTo, new AssertionError(s"~~~~~~ unhandled message ${s}"))
   }
 }
 

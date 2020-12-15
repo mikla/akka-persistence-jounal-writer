@@ -34,3 +34,11 @@ README
 bin/*
 libexec/*
 perf/*
+
+.bloop/
+.metals/
+.bsp/
+.history/
+.vscode/
+project/metals.Sbt
+journal/

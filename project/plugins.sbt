@@ -1,6 +1,6 @@
 resolvers += "sonatype-releases" at "https://oss.sonatype.org/content/repositories/releases/"
 
-resolvers += "bintray-sbt-plugin-releases" at "http://dl.bintray.com/content/sbt/sbt-plugin-releases"
+resolvers += "bintray-sbt-plugin-releases" at "https://dl.bintray.com/content/sbt/sbt-plugin-releases"
 
 // to deploy to bintray
 addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.4")

@@ -142,6 +142,9 @@ Its only applicable in some use cases of course.
 
 # What's new?
 
+### 0.0.6 (2020-12-11)
+- Akka 2.6 support.
+
 ### 0.0.5 (2020-02-05)
 - Akka 2.5. Scala 2.13 support.
 
