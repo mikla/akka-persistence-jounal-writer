@@ -1,6 +1,6 @@
 # akka-persistence-journal-writer
 
-[![Build Status](https://travis-ci.org/dnvriend/akka-persistence-jounal-writer.svg?branch=master)](https://travis-ci.org/dnvriend/akka-persistence-jounal-writer)
+[![Build Status](https://travis-ci.org/mikla/akka-persistence-jounal-writer.svg?branch=master)](https://travis-ci.org/github/mikla/akka-persistence-jounal-writer)
 
 ![Maven Central 2.12](https://img.shields.io/maven-central/v/io.github.mikla/akka-persistence-journal-writer_2.12.svg?label=Scala%202.12)
 ![Maven Central 2.12](https://img.shields.io/maven-central/v/io.github.mikla/akka-persistence-journal-writer_2.13.svg?label=Scala%202.13)
