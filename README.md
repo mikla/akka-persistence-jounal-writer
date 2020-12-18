@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/mikla/akka-persistence-jounal-writer.svg?branch=master)](https://travis-ci.org/github/mikla/akka-persistence-jounal-writer)
 
 ![Maven Central 2.12](https://img.shields.io/maven-central/v/io.github.mikla/akka-persistence-journal-writer_2.12.svg?label=Scala%202.12)
-![Maven Central 2.12](https://img.shields.io/maven-central/v/io.github.mikla/akka-persistence-journal-writer_2.13.svg?label=Scala%202.13)
+![Maven Central 2.13](https://img.shields.io/maven-central/v/io.github.mikla/akka-persistence-journal-writer_2.13.svg?label=Scala%202.13)
 
 [![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
@@ -17,7 +17,7 @@ Original work done by [Dennis Vriend](https://github.com/dnvriend).
 Add the following to your `build.sbt`:
 
 ```scala
-libraryDependencies += "io.github.mikla" %% "akka-persistence-journal-writer" % "0.0.5"
+libraryDependencies += "io.github.mikla" %% "akka-persistence-journal-writer" % "0.0.6"
 ```
 
 For version 0.0.4 and older:
@@ -144,6 +144,7 @@ Its only applicable in some use cases of course.
 
 ### 0.0.6 (2020-12-11)
 - Akka 2.6 support.
+- Drop Scala 2.12 support.
 
 ### 0.0.5 (2020-02-05)
 - Akka 2.5. Scala 2.13 support.
